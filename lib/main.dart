@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             textImg(),
-            homePageCard(),
+            homePageCard()
           ],
         ),
       ),

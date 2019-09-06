@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './actionRow.dart';
+import './sourceDestinationInput.dart';
 
 class homePageCard extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class homePageCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[actionRow()],
+              children: <Widget>[actionRow(), sdInput()],
             ),
           ),
         ),
