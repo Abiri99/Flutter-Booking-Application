@@ -29,8 +29,12 @@ class _ddBtnState extends State<ddBtn> {
             icon: Icon(Icons.mode_edit),
             label: Text("Trip type:" + tripType),
             onPressed: _changeTripMode,
+            elevation: 8,
             color: Colors.orange,
             textColor: Colors.white,
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(30.0),
+            ),
           )
         ],
       ),
