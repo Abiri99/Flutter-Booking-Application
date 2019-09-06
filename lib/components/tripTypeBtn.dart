@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ddBtn extends StatefulWidget {
+class ttBtn extends StatefulWidget {
   @override
-  _ddBtnState createState() => _ddBtnState();
+  _ttBtnState createState() => _ttBtnState();
 }
 
-class _ddBtnState extends State<ddBtn> {
+class _ttBtnState extends State<ttBtn> {
   String tripType = "One way";
 
   void _changeTripMode() {
