@@ -33,6 +33,7 @@ class _sdInputState extends State<sdInput> {
                         cursorColor: Colors.grey,
                         decoration: InputDecoration(
                             labelText: "Enter your source",
+                            prefixIcon: Icon(Icons.pin_drop),
                             fillColor: Colors.grey,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8))),
@@ -42,10 +43,13 @@ class _sdInputState extends State<sdInput> {
                       height: 8,
                     ),
                     SizedBox(
+
                       height: 42,
                       child: TextFormField(
+                        cursorWidth: 0,
                         decoration: InputDecoration(
                             labelText: "Enter your destination",
+                            prefixIcon: Icon(Icons.map),
                             fillColor: Colors.grey,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8))),
