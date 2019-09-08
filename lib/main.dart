@@ -11,11 +11,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MrBilit',
       home: Scaffold(
-        appBar: null,
-        floatingActionButton: null,
-        backgroundColor: Colors.red,
-        body: home()
-      ),
+          appBar: null,
+          floatingActionButton: null,
+          backgroundColor: Colors.grey,
+          body: Stack(
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/Flight.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              home()
+            ],
+          )),
     );
   }
 }
