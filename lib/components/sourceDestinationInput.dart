@@ -14,6 +14,10 @@ class _sdInputState extends State<sdInput> {
   int angle;
   String date = "Choose date";
 
+  final sourceController = TextEditingController();
+  final destinationController = TextEditingController();
+  final dateController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +33,8 @@ class _sdInputState extends State<sdInput> {
                     ),
                     SizedBox(
                       height: 42,
-                      child: TextFormField(
+                      child: TextField(
+                        controller: sourceController,
                         cursorColor: Colors.grey,
                         decoration: InputDecoration(
                             labelText: "Enter your source",
@@ -43,9 +48,9 @@ class _sdInputState extends State<sdInput> {
                       height: 8,
                     ),
                     SizedBox(
-
                       height: 42,
-                      child: TextFormField(
+                      child: TextField(
+                        controller: destinationController,
                         cursorWidth: 0,
                         decoration: InputDecoration(
                             labelText: "Enter your destination",
@@ -77,19 +82,33 @@ class _sdInputState extends State<sdInput> {
             ],
           ),
           SizedBox(
+            height: 8,
+          ),
+          SizedBox(
+            height: 42,
             width: double.infinity,
-            child: RaisedButton(
-              color: Colors.orange,
-              textColor: Colors.white,
-              child: Text(date),
-              onPressed: () {
-                print("btn pressed");
+            child: TextField(
+              controller: dateController,
+              enableInteractiveSelection: false,
+              cursorWidth: 0,
+              decoration: InputDecoration(
+                  labelText: "Enter your destination",
+                  prefixIcon: Icon(Icons.map),
+                  fillColor: Colors.grey,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8))),
+              onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return null;
+                    });
+                // print("source: " + this.sourceController.text);
+                // print("destination: " + this.destinationController.text);
               },
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(8.0),
-              ),
             ),
-          )
+          ),
         ],
       ),
     );

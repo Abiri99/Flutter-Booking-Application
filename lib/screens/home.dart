@@ -9,13 +9,14 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/travel-photography.jpg'),
+            image: AssetImage('assets/images/Flight.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -23,7 +24,7 @@ class _homeState extends State<home> {
       Column(
         children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 2.5,
             child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
@@ -40,8 +41,9 @@ class _homeState extends State<home> {
           Expanded(
             child: Container(
               child: Card(
-                shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+                elevation: 16,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
                 ),
                 margin: EdgeInsets.all(0),
                 color: Colors.white,
@@ -54,6 +56,14 @@ class _homeState extends State<home> {
                   ),
                 ),
               ),
+              // decoration: BoxDecoration(
+              //   boxShadow: [
+              //     BoxShadow(
+              //       color: Colors.black38,
+              //       blurRadius: 20.0,
+              //     )
+              //   ]
+              // ),
             ),
           )
         ],
