@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './components/homePageCard.dart';
-import './components/textImage.dart';
+import './screens/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,12 +14,7 @@ class MyApp extends StatelessWidget {
         appBar: null,
         floatingActionButton: null,
         backgroundColor: Colors.red,
-        body: Column(
-          children: <Widget>[
-            textImg(),
-            homePageCard()
-          ],
-        ),
+        body: home()
       ),
     );
   }
