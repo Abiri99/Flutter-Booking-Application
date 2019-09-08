@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mrbilit/components/beautyTf.dart';
-import './beautyTf.dart';
+import './myTextField.dart';
 import 'tripTypeBtn.dart';
 
 class sdInput extends StatefulWidget {
@@ -92,8 +91,8 @@ class _sdInputState extends State<sdInput> {
               enableInteractiveSelection: false,
               cursorWidth: 0,
               decoration: InputDecoration(
-                  labelText: "Enter your destination",
-                  prefixIcon: Icon(Icons.map),
+                  labelText: date,
+                  prefixIcon: Icon(Icons.date_range),
                   fillColor: Colors.grey,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8))),
@@ -108,6 +107,9 @@ class _sdInputState extends State<sdInput> {
                 // print("destination: " + this.destinationController.text);
               },
             ),
+          ),
+          SizedBox(
+            height: 8,
           ),
         ],
       ),
