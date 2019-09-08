@@ -8,20 +8,20 @@ class homePageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Expanded(
-      child: Container(
-        child: Card(
-          margin: EdgeInsets.all(0),
-          color: Colors.white,
-          child: Container(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[actionRow(), sdInput()],
+        child: Container(
+          child: Card(
+            margin: EdgeInsets.all(0),
+            color: Colors.white,
+            child: Container(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[actionRow(), sdInput()],
+              ),
             ),
           ),
         ),
-      ),
     ));
   }
 }
