@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mrbilit/components/persianCalendar.dart';
 import '../components/buttons/tripTypeBtn.dart';
 import './../components/persianCalendar.dart';
+import './../components/buttons/searchBtn.dart';
 
 class homeCardContent extends StatefulWidget {
   @override
@@ -42,11 +43,13 @@ class _homeCardContentState extends State<homeCardContent> {
     print(tripType);
   }
 
-  String setDate({String fMonth, String fDay, String lMonth, String lDay, String type}) {
+  Function setDate({String fMonth, String fDay, String lMonth, String lDay, String type}) {
     setState(() {
-     date =  type == "One way" ? fMonth + " " + fDay : fMonth + " " + fDay + " - " + lMonth + " " + lDay;
-     print(date);
-    }); 
+      date = type == "One way"
+          ? fMonth + " " + fDay
+          : fMonth + " " + fDay + " - " + lMonth + " " + lDay;
+      print(date);
+    });
   }
 
   @override
@@ -108,15 +111,21 @@ class _homeCardContentState extends State<homeCardContent> {
                   top: 40,
                   right: 8,
                   child: GestureDetector(
-                    onTap: () {swap();},
+                    onTap: () {
+                      swap();
+                    },
                     child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(
-                            color: Colors.orange
-                          ),
-                          color: Colors.orange,
-                        ),
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(color: Colors.orange),
+                            color: Colors.orange,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 5),
+                                  blurRadius: 8,
+                                  spreadRadius: 0.1)
+                            ]),
                         child: RotatedBox(
                           quarterTurns: 3,
                           child: IconButton(
@@ -159,19 +168,7 @@ class _homeCardContentState extends State<homeCardContent> {
           SizedBox(
             height: 8,
           ),
-          SizedBox(
-            height: 42,
-            width: double.infinity,
-            child: RaisedButton(
-              textColor: Colors.white,
-              color: Colors.blue,
-              elevation: 6,
-              hoverElevation: 20,
-              onPressed: () {print("pressed");},
-              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
-              child: Text("Search"),
-            ),
-          )
+          searchBtn(),
         ],
       ),
     );
