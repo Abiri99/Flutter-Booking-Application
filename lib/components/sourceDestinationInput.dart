@@ -9,20 +9,38 @@ class sdInput extends StatefulWidget {
 }
 
 class _sdInputState extends State<sdInput> {
-  String source = '';
-  String destination = '';
-  int angle;
+  // String source = '';
+  // String destination = '';
+  // int angle;
   String date = "Choose date";
 
   final sourceController = TextEditingController();
   final destinationController = TextEditingController();
   final dateController = TextEditingController();
 
+  Function swap() {
+    String src = sourceController.text;
+    String des = destinationController.text;
+    print("swaped");
+    sourceController.text = des;
+    destinationController.text = src;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
+          Container(
+              child: Row(
+            children: <Widget>[
+              Expanded(
+                child: ttBtn(),
+              ),
+              Icon(Icons.person, color: Colors.blueGrey),
+              Icon(Icons.credit_card, color: Colors.blueGrey),
+            ],
+          )),
           Stack(
             children: <Widget>[
               Container(
@@ -66,19 +84,22 @@ class _sdInputState extends State<sdInput> {
               Positioned(
                   top: 40,
                   right: 8,
-                  child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.orange,
-                      ),
-                      child: Transform.rotate(
-                        angle: 0,
-                        child: IconButton(
-                          icon: Icon(Icons.compare_arrows),
-                          disabledColor: Colors.white,
-                          onPressed: null,
+                  child: GestureDetector(
+                    onTap: () {swap();},
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.orange,
                         ),
-                      ))),
+                        child: Transform.rotate(
+                          angle: 0,
+                          child: IconButton(
+                            icon: Icon(Icons.compare_arrows),
+                            disabledColor: Colors.white,
+                            onPressed: null,
+                          ),
+                        )),
+                  )),
             ],
           ),
           SizedBox(

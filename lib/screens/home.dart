@@ -55,7 +55,7 @@ class _homeState extends State<home> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[actionRow(), sdInput()],
+                                children: <Widget>[sdInput()],
                               ),
                             ),
                           ),
