@@ -83,7 +83,7 @@ class _homeCardContentState extends State<homeCardContent> {
                         decoration: InputDecoration(
                             labelText: "Enter your source",
                             prefixIcon: Icon(Icons.pin_drop),
-                            fillColor: Colors.grey,
+                            fillColor: Colors.blue,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8))),
                       ),
@@ -99,7 +99,7 @@ class _homeCardContentState extends State<homeCardContent> {
                         decoration: InputDecoration(
                             labelText: "Enter your destination",
                             prefixIcon: Icon(Icons.map),
-                            fillColor: Colors.grey,
+                            fillColor: Colors.blue,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8))),
                       ),
@@ -150,7 +150,7 @@ class _homeCardContentState extends State<homeCardContent> {
               decoration: InputDecoration(
                   labelText: date,
                   prefixIcon: Icon(Icons.date_range),
-                  fillColor: Colors.grey,
+                  fillColor: Colors.blue,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8))),
               onTap: () {

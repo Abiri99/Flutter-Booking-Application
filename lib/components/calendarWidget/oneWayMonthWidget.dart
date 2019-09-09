@@ -19,13 +19,14 @@ class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
   Function selectDay(int no) {
     //add day to state
     //set start , end state
-    if(selected < 0) {
+    if (selected < 0) {
       setState(() {
-        selected = no;
+        selected = no+1;
       });
       //pop stack
       Navigator.pop(context);
-      widget.setDate(fDay: no.toString(), fMonth: widget.title, type: "One way");
+      widget.setDate(
+          fDay: no.toString(), fMonth: widget.title, type: "One way");
       print("selected: $selected");
     }
   }
@@ -36,14 +37,33 @@ class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 0, right: 0, top: 8, bottom: 24,),
-            child: Text(
-              widget.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+            padding: EdgeInsets.only(
+              left: 0,
+              right: 0,
+              top: 8,
+              bottom: 24,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Icon(
+                  Icons.arrow_back,
+                  color: Colors.grey,
+                ),
+                Text(
+                  widget.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.grey,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward,
+                  color: Colors.grey,
+                ),
+              ],
             ),
             decoration: BoxDecoration(),
           ),
@@ -59,7 +79,9 @@ class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
                       padding: EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: selected == index ? Colors.blue : Colors.transparent,
+                        color: selected == index
+                            ? Colors.blue
+                            : Colors.transparent,
                       ),
                       child: Align(
                         alignment: Alignment.center,
@@ -67,7 +89,9 @@ class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
                           (index + 1).toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: selected == index ? Colors.white : Colors.black87,
+                            color: selected == index
+                                ? Colors.white
+                                : Colors.black87,
                           ),
                         ),
                       )),

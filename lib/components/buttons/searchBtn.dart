@@ -22,20 +22,14 @@ class _searchBtnState extends State<searchBtn> {
     setState(() {
       _width = _width == 42.0 ? 500.0 : 42.0;
       _borderRadius = _borderRadius == 8.0 ? 100.0 : 8.0;
-      _child = true
-          ? SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(backgroundColor: Colors.white,),
-          )
-          : Text(
-              "Search",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            );
+      _child = SizedBox(
+        width: 18,
+        height: 18,
+        child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+          strokeWidth: 2,
+        ),
+      );
     });
   }
 

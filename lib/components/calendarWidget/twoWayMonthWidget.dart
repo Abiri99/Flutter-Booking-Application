@@ -21,18 +21,23 @@ class _twoWayMonthWidgetState extends State<twoWayMonthWidget> {
     //set start , end state
     if (start < 0) {
       setState(() {
-        start = no;
+        start = no + 1;
         flag = 0;
         print("start: $start");
       });
     } else if (end < 0) {
       setState(() {
-        end = no;
+        end = no + 1;
         flag = 1;
         print("end: $end");
         //pop bottom sheet from stack
         Navigator.pop(context);
-        widget.setDate(fDay: start.toString(), lDay: end.toString(), fMonth: widget.title, lMonth: widget.title, type: "Two way");
+        widget.setDate(
+            fDay: start.toString(),
+            lDay: end.toString(),
+            fMonth: widget.title,
+            lMonth: widget.title,
+            type: "Two way");
       });
     }
   }
@@ -43,14 +48,33 @@ class _twoWayMonthWidgetState extends State<twoWayMonthWidget> {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 0, right: 0, top: 8, bottom: 24,),
-            child: Text(
-              widget.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+            padding: EdgeInsets.only(
+              left: 0,
+              right: 0,
+              top: 8,
+              bottom: 24,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Icon(
+                  Icons.arrow_back,
+                  color: Colors.grey,
+                ),
+                Text(
+                  widget.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.grey,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward,
+                  color: Colors.grey,
+                ),
+              ],
             ),
             decoration: BoxDecoration(),
           ),
@@ -66,7 +90,9 @@ class _twoWayMonthWidgetState extends State<twoWayMonthWidget> {
                       padding: EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: start==index ? Colors.blue : end==index? Colors.red : Colors.transparent,
+                        color: start == index
+                            ? Colors.blue
+                            : end == index ? Colors.red : Colors.transparent,
                       ),
                       child: Align(
                         alignment: Alignment.center,
@@ -74,7 +100,9 @@ class _twoWayMonthWidgetState extends State<twoWayMonthWidget> {
                           (index + 1).toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: start==index ? Colors.white : end==index? Colors.white : Colors.black87,
+                            color: start == index
+                                ? Colors.white
+                                : end == index ? Colors.white : Colors.black87,
                           ),
                         ),
                       )),
