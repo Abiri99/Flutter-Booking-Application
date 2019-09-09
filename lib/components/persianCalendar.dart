@@ -20,9 +20,9 @@ class _persianCalendarState extends State<persianCalendar> {
   final controller = PageController(initialPage: 0);
 
   var months = [
-    month('farvardin', 31),
-    month('ordibehesht', 31),
-    month('khordad', 31),
+    month('فروردین', 31),
+    month('اردیبهشت', 31),
+    month('خرداد', 31),
   ];
 
   @override
