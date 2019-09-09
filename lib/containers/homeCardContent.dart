@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mrbilit/components/persianCalendar.dart';
-import '../components/tripTypeBtn.dart';
+import '../components/buttons/tripTypeBtn.dart';
 import './../components/persianCalendar.dart';
 
 class homeCardContent extends StatefulWidget {
@@ -117,8 +117,8 @@ class _homeCardContentState extends State<homeCardContent> {
                           ),
                           color: Colors.orange,
                         ),
-                        child: Transform.rotate(
-                          angle: 0,
+                        child: RotatedBox(
+                          quarterTurns: 3,
                           child: IconButton(
                             icon: Icon(Icons.compare_arrows),
                             disabledColor: Colors.white,
