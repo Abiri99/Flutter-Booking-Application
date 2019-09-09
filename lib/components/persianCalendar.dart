@@ -2,14 +2,28 @@ import 'package:flutter/material.dart';
 
 import '../screens/page_view/screen1.dart';
 import '../screens/page_view/screen2.dart';
+import './monthWidget.dart';
+
+import '../model/month.dart';
 
 class persianCalendar extends StatefulWidget {
+
+  Function onSelectDate;
+
+  //persianCalendar(this.onSelectDate);
+
   @override
   _persianCalendarState createState() => _persianCalendarState();
 }
 
 class _persianCalendarState extends State<persianCalendar> {
   final controller = PageController(initialPage: 0);
+
+  var months = [
+    month('farvardin', 31),
+    month('ordibehesht', 31),
+    month('khordad', 31),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +40,26 @@ class _persianCalendarState extends State<persianCalendar> {
         child: PageView(
           controller: controller,
           children: <Widget>[
-            screen1(),
-            screen2(),
+            //Screens are different months of selected year,
+            //In real app data will be mapped to widgets,
+            ...(months.map((month) {
+              return monthWidget(
+                title: month.title,
+                daysNo: month.daysNo
+              );
+            })).toList(),
+            // screen1(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
+            // screen2(),
           ],
         ),
       ),
