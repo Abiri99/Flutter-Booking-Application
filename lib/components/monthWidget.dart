@@ -11,7 +11,9 @@ class monthWidget extends StatefulWidget {
 }
 
 class _monthWidgetState extends State<monthWidget> {
-  Function renderDays(int no) {}
+  Function selectDay(int no) {
+    //add day to state
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,74 +32,34 @@ class _monthWidgetState extends State<monthWidget> {
             ),
             decoration: BoxDecoration(),
           ),
-          Table(
-            border: TableBorder.all(color: Color(0xFFe0e0e0)),
-            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            children: [
-              TableRow(
-                children: [
-                  Text(
-                    widget.title,
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    "hi",
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    "hi",
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    "hi",
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    "hi",
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    "hi",
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    "hi",
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+          Expanded(
+            child: Container(
+              child: GridView.count(
+                crossAxisCount: 7,
+                children: List.generate(widget.daysNo, (index) {
+                  return GestureDetector(
+                    onTap: selectDay(index),
+                    child: Container(
+                        padding: EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.purple,
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            index.toString(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+                  );
+                }),
               ),
-              TableRow(children: [
-                Text(
-                  widget.title,
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.center,
-                ),
-              ]),
-            ],
-          ),
+            ),
+          )
         ],
       ),
     );
