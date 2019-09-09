@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mrbilit/components/persianCalendar.dart';
-import 'tripTypeBtn.dart';
-import './persianCalendar.dart';
+import '../components/tripTypeBtn.dart';
+import './../components/persianCalendar.dart';
 
-class sdInput extends StatefulWidget {
+class homeCardContent extends StatefulWidget {
   @override
-  _sdInputState createState() => _sdInputState();
+  _homeCardContentState createState() => _homeCardContentState();
 }
 
-class _sdInputState extends State<sdInput> {
+class _homeCardContentState extends State<homeCardContent> {
+  String tripType = "One way";
   // String source = '';
   // String destination = '';
   // int angle;
@@ -18,12 +19,34 @@ class _sdInputState extends State<sdInput> {
   final destinationController = TextEditingController();
   final dateController = TextEditingController();
 
+  //The function which swaps source/destination text field values.
   Function swap() {
     String src = sourceController.text;
     String des = destinationController.text;
     print("swaped");
     sourceController.text = des;
     destinationController.text = src;
+  }
+
+  //Function which listens to changes happening to trip type.
+  Function onChangeMode() {
+    if (tripType == "One way") {
+      setState(() {
+        tripType = "Two way";
+      });
+    } else {
+      setState(() {
+        tripType = "One way";
+      });
+    }
+    print(tripType);
+  }
+
+  String setDate({String fMonth, String fDay, String lMonth, String lDay, String type}) {
+    setState(() {
+     date =  type == "One way" ? fMonth + " " + fDay : fMonth + " " + fDay + " - " + lMonth + " " + lDay;
+     print(date);
+    }); 
   }
 
   @override
@@ -35,7 +58,7 @@ class _sdInputState extends State<sdInput> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: ttBtn(),
+                child: ttBtn(onChangeMode, tripType),
               ),
               Icon(Icons.person, color: Colors.blueGrey),
               Icon(Icons.credit_card, color: Colors.blueGrey),
@@ -89,6 +112,9 @@ class _sdInputState extends State<sdInput> {
                     child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            color: Colors.orange
+                          ),
                           color: Colors.orange,
                         ),
                         child: Transform.rotate(
@@ -123,7 +149,7 @@ class _sdInputState extends State<sdInput> {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
-                      return persianCalendar();
+                      return persianCalendar(type: tripType, setDate: setDate);
                     });
                 // print("source: " + this.sourceController.text);
                 // print("destination: " + this.destinationController.text);
@@ -133,6 +159,19 @@ class _sdInputState extends State<sdInput> {
           SizedBox(
             height: 8,
           ),
+          SizedBox(
+            height: 42,
+            width: double.infinity,
+            child: RaisedButton(
+              textColor: Colors.white,
+              color: Colors.blue,
+              elevation: 6,
+              hoverElevation: 20,
+              onPressed: () {print("pressed");},
+              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
+              child: Text("Search"),
+            ),
+          )
         ],
       ),
     );

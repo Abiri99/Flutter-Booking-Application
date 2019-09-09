@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ttBtn extends StatefulWidget {
-  @override
-  _ttBtnState createState() => _ttBtnState();
-}
+class ttBtn extends StatelessWidget {
 
-class _ttBtnState extends State<ttBtn> {
-  String tripType = "One way";
+  Function onChangeMode;
+  String tripType;
 
-  void _changeTripMode() {
-    if (tripType == "One way") {
-      setState(() {
-        tripType = "Two way";
-      });
-    } else {
-      setState(() {
-        tripType = "One way";
-      });
-    }
-  }
+  ttBtn(@required this.onChangeMode, @required this.tripType);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +15,7 @@ class _ttBtnState extends State<ttBtn> {
           RaisedButton.icon(
             icon: Icon(Icons.mode_edit),
             label: Text("Trip type:" + tripType),
-            onPressed: _changeTripMode,
+            onPressed: onChangeMode,
             elevation: 8,
             color: Colors.orange,
             textColor: Colors.white,

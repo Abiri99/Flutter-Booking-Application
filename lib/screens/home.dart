@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
+import '../containers/homeCardContent.dart';
 
-import '../components/actionRow.dart';
-import '../components/sourceDestinationInput.dart';
-
-class home extends StatefulWidget {
-  @override
-  _homeState createState() => _homeState();
-}
-
-class _homeState extends State<home> {
+class home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -18,11 +11,9 @@ class _homeState extends State<home> {
             Stack(
               children: <Widget>[
                 Container(
-                  color: Colors.green,
-                ),
-                Container(
                   child: Column(
                     children: <Widget>[
+                      //Transparent header including text at bottom left.
                       Container(
                         height: MediaQuery.of(context).size.height / 2.5,
                         child: Align(
@@ -38,35 +29,29 @@ class _homeState extends State<home> {
                               ),
                             )),
                       ),
+                      //Card container
                       Container(
                         height: MediaQuery.of(context).size.height / 1.13,
-                        child: Container(
-                          child: Card(
-                            elevation: 16,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
-                            ),
-                            margin: EdgeInsets.all(0),
-                            color: Colors.white,
-                            child: Container(
-                              padding: EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[sdInput()],
-                              ),
+                        child: Card(
+                          elevation: 16,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(25),
+                              topRight: Radius.circular(25),
                             ),
                           ),
-                          // decoration: BoxDecoration(
-                          //   boxShadow: [
-                          //     BoxShadow(
-                          //       color: Colors.black38,
-                          //       blurRadius: 20.0,
-                          //     )
-                          //   ]
-                          // ),
+                          margin: EdgeInsets.all(0),
+                          color: Colors.white,
+                          child: Container(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                homeCardContent(),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],

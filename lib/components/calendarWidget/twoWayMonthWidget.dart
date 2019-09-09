@@ -1,30 +1,39 @@
 import 'package:flutter/material.dart';
 
-class oneWayMonthWidget extends StatefulWidget {
+class twoWayMonthWidget extends StatefulWidget {
   String title;
   int daysNo;
+  Function setDate;
 
-  oneWayMonthWidget({this.title, this.daysNo});
+  twoWayMonthWidget({this.title, this.daysNo, @required this.setDate});
 
   @override
-  _oneWayMonthWidgetState createState() => _oneWayMonthWidgetState();
+  _twoWayMonthWidgetState createState() => _twoWayMonthWidgetState();
 }
 
-class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
-  int selected = -1;
+class _twoWayMonthWidgetState extends State<twoWayMonthWidget> {
+  int start = -1, end = -1;
   //flag is used to see which state is initialized.
-  //int flag = -1;
+  int flag = -1;
 
   Function selectDay(int no) {
     //add day to state
     //set start , end state
-    if(selected < 0) {
+    if (start < 0) {
       setState(() {
-        selected = no;
+        start = no;
+        flag = 0;
+        print("start: $start");
       });
-      //pop stack
-      Navigator.pop(context);
-      print("selected: $selected");
+    } else if (end < 0) {
+      setState(() {
+        end = no;
+        flag = 1;
+        print("end: $end");
+        //pop bottom sheet from stack
+        Navigator.pop(context);
+        widget.setDate(fDay: start.toString(), lDay: end.toString(), fMonth: widget.title, lMonth: widget.title, type: "Two way");
+      });
     }
   }
 
@@ -57,7 +66,7 @@ class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
                       padding: EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: selected == index ? Colors.blue : Colors.transparent,
+                        color: start==index ? Colors.blue : end==index? Colors.red : Colors.transparent,
                       ),
                       child: Align(
                         alignment: Alignment.center,
@@ -65,7 +74,7 @@ class _oneWayMonthWidgetState extends State<oneWayMonthWidget> {
                           (index + 1).toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: selected == index ? Colors.white : Colors.black87,
+                            color: start==index ? Colors.white : end==index? Colors.white : Colors.black87,
                           ),
                         ),
                       )),
