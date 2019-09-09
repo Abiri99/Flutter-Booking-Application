@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/page_view/screen1.dart';
 import '../screens/page_view/screen2.dart';
-import './monthWidget.dart';
+import './montWidget/twoWayMonthWidget.dart';
 
 import '../model/month.dart';
 
@@ -43,7 +43,7 @@ class _persianCalendarState extends State<persianCalendar> {
             //Screens are different months of selected year,
             //In real app data will be mapped to widgets,
             ...(months.map((month) {
-              return monthWidget(
+              return twoWayMonthWidget(
                 title: month.title,
                 daysNo: month.daysNo
               );
